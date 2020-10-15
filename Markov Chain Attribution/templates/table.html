@@ -1,0 +1,77 @@
+{% extends "layout.html" %}
+
+{% block buttons %}
+<div id = "viewport">
+
+<div id="sidebar">
+        <header>
+            <a href = {{url_for('BQ_INIT')}} class = "navbar-brand"><img src = "{{url_for('static', filename = 'nabler-logo.png')}}"  id = "logo" alt = "Nabler Logo" id = "nabler_logo"></a>
+        </header>
+    <ul class="nav">
+      <li>
+       <a href = {{url_for("gen_table", value = "conversion_sum")}} class = "nav-link">
+          <i class="zmdi zmdi-view-dashboard"></i>  Conversion Summary
+       </a>
+      </li>
+
+      <li>
+        <a href = {{url_for("gen_table", value = "removal_effect")}} class = "nav-link">
+          <i class="zmdi zmdi-calendar"></i> Removal Effect
+        </a>
+      </li>
+      <li>
+        <a href = {{url_for("gen_table", value = "first_touch")}} class = "nav-link">
+          <i class="zmdi zmdi-info-outline"></i> First Touch Attribution
+        </a>
+      </li>
+      <li>
+        <a href = {{url_for("gen_table", value = "last_touch")}} class = "nav-link">
+          <i class="zmdi zmdi-settings"></i> Last Touch Attribution
+        </a>
+      </li>
+    </ul>
+
+</div>
+{% endblock buttons %}
+
+{% block tables %}
+
+<div class = "container-fluid">
+    {% if current_user.is_authenticated %}
+        <a class = "pull-right navbar-brand btn-primary btn-color" id = "logout" href= {{url_for('logout_func')}}>Log out</a>
+    {% endif %}
+</div>
+<br><br>
+  <div id="content">
+
+    <div class="container-fluid table-responsive">
+      <h2 class = "text-center">{{title}}</h2>
+         <table class = "table table-striped table-hover table-bordered" align="center" id = "table" style = "width: 95%">
+        <thead class = "thead">
+            <tr>
+                {% if (title == 'Transition Matrix' or title == 'Percentage Transition Matrix') %}
+                <th scope = "col">Channel From</th>
+                {% endif %}
+                {% for col in columns  %}
+                    <th scope="col">{{col}}</th>
+                {% endfor %}
+            </tr>
+        </thead>
+        <tbody>
+            {% for idx, row in rows %}
+                <tr>
+                    {% if (title == 'Transition Matrix' or title == "Percentage Transition Matrix") %}
+                    <th scope = "row">{{idx}}</th>
+                    {% endif %}
+                    {% for data in row %}
+                        <td>{{data}}</td>
+                    {% endfor %}
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    </div>
+  </div>
+</div>
+{% endblock tables %}
+

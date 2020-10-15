@@ -1,0 +1,46 @@
+{% extends "layout.html" %}
+
+{%block form %}
+
+<div id = "viewport">
+    <div id="sidebar">
+        <header>
+            <a href = {{url_for('BQ_INIT')}} class = "navbar-brand"><img src = "{{url_for('static', filename = 'nabler-logo.png')}}"  id = "logo" alt = "Nabler Logo" id = "nabler_logo"></a>
+        </header>
+        <ul class="nav">
+          <li>
+           <a name = "button" class="nav-link" href = {{ url_for('BQ_INIT') }}>
+              <i class="zmdi zmdi-view-dashboard"></i> Big Query
+           </a>
+          </li>
+          <li>
+            <a href = {{ url_for('GA_INIT') }} class="nav-link">
+              <i class="zmdi zmdi-link"></i> Google Analytics
+            </a>
+          </li>
+        </ul>
+    </div>
+
+    <div class = "container-fluid">
+        {% if current_user.is_authenticated %}
+            <a class = "pull-right navbar-brand btn-primary btn-color" id = "logout" href= {{url_for('logout_func')}}>Log out</a>
+        {% endif %}
+    </div>
+    <br><br>
+
+    <div id="content" class = "container">
+        <div class = "login-form" style="width: 30%;">
+            <form method = "post" name = "myform" enctype = "multipart/form-data">
+                <h2 class = "text-center">Choose File</h2>
+                 <div class="form-group">
+                     <input type = "file" name = "flup" class = "btn btn-primary btn-block btn-color" accept = ".csv" required/>
+
+                </div>
+                <div class="form-group">
+                   <button  name = "button" id = "calculate" value = "submit" class="btn btn-primary btn-block btn-color">Calculate</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{%endblock form %}

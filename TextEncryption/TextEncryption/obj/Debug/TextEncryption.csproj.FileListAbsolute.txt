@@ -1,0 +1,6 @@
+D:\TextEncryption\TextEncryption\bin\Debug\TextEncryption.exe.config
+D:\TextEncryption\TextEncryption\bin\Debug\TextEncryption.exe
+D:\TextEncryption\TextEncryption\bin\Debug\TextEncryption.pdb
+D:\TextEncryption\TextEncryption\obj\Debug\TextEncryption.csprojResolveAssemblyReference.cache
+D:\TextEncryption\TextEncryption\obj\Debug\TextEncryption.exe
+D:\TextEncryption\TextEncryption\obj\Debug\TextEncryption.pdb
